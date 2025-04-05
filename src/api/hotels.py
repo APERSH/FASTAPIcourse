@@ -26,8 +26,6 @@ async def  get_hotels(
         )
 
     
-    
-
 @router.post('')
 async def create_hotel(hotel_data : Hotel = Body(openapi_examples={
     '1': {'summary': 'Сочи', 'value': {
@@ -41,19 +39,16 @@ async def create_hotel(hotel_data : Hotel = Body(openapi_examples={
 })
 ):
     async with async_session_maker() as session:
-        hotel = await HotelsRepository(session).add(**hotel_data.model_dump())
+        hotel = await HotelsRepository(session).add(hotel_data)
         await session.commit()
     return {'status': 'OK', "data" : hotel}
 
 
 @router.put('/{hotel_id}')
-def change_hotel_put(hotel_id:int, hotel_data: Hotel):
-    global hotels
-    for hotel in hotels:
-        if hotel['id'] == hotel_id:
-            hotel['title'] = hotel_data.title
-            hotel['name'] = hotel_data.name
-    return {'status': 'OK'}
+async def change_hotel_put(hotel_id:int, hotel_data: Hotel):
+    async with async_session_maker() as session:
+        hotel = await HotelsRepository(session).edit(hotel_data, id = hotel_id)
+    return {'status': 'OK', "hotel" : hotel}
 
 
 @router.patch('/{hotel_id}')
