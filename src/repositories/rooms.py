@@ -1,3 +1,4 @@
+from src.repositories.mappers.mappers import RoomDataMapper
 from repositories.utils import rooms_ids_for_bookings
 from src.models.bookings import BookingsOrm
 from repositories.base import BaseRepository
@@ -8,7 +9,8 @@ from sqlalchemy.orm import selectinload, joinedload
 
 class RoomsRepository(BaseRepository):
     model = RoomsOrm
-    schema = Room
+    mapper = RoomDataMapper
+
     async def get_filtered_by_time(
              self,
              hotel_id,

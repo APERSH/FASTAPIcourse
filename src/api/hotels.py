@@ -4,12 +4,14 @@ from src.schemas.hotels import Hotel, HotelPATCH, HotelAdd
 from src.api.dependencies import PaginationDep, DBDep
 from src.database import async_session_maker
 from repositories.hotels import HotelsRepository
+from fastapi_cache.decorator import cache
 
 
 router = APIRouter(prefix='/hotels', tags=['Отели'])
 
 
 @router.get("")
+@cache(expire=10)
 async def  get_hotels(
         pagination: PaginationDep, 
         db: DBDep,
