@@ -1,10 +1,10 @@
 
 
-from repositories.hotels import HotelsRepository
-from repositories.rooms import RoomsRepository
-from repositories.users import UsersRepository
-from repositories.bookings import BookingsRepository
-from repositories.facilities import FacilitiesRepository, RoomsFacilitiesRepository
+from src.repositories.hotels import HotelsRepository
+from src.repositories.rooms import RoomsRepository
+from src.repositories.users import UsersRepository
+from src.repositories.bookings import BookingsRepository
+from src.repositories.facilities import FacilitiesRepository, RoomsFacilitiesRepository
 
 
 class DBManager:

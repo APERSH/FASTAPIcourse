@@ -1,7 +1,7 @@
 from src.repositories.mappers.mappers import RoomDataMapper
-from repositories.utils import rooms_ids_for_bookings
+from src.repositories.utils import rooms_ids_for_bookings
 from src.models.bookings import BookingsOrm
-from repositories.base import BaseRepository
+from src.repositories.base import BaseRepository
 from src.models.rooms import RoomsOrm
 from src.schemas.rooms import Room, RoomWithRels
 from sqlalchemy import select, func

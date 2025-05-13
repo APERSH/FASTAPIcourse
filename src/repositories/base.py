@@ -1,7 +1,7 @@
 from sqlalchemy import select, insert, update, delete
 from pydantic import BaseModel
 
-from repositories.mappers.base import DataMapper
+from src.repositories.mappers.base import DataMapper
 
 
 
@@ -38,7 +38,7 @@ class BaseRepository:
         add_stat = insert(self.model).values(**data.model_dump()).returning(self.model)
         result = await self.session.execute((add_stat))
         model = result.scalars().one()
-        return self.mapper.map_to_domain_entity(model, from_attributes=True)
+        return self.mapper.map_to_domain_entity(model)
     
     async def add_bulk(self, data: list[BaseModel]):
         add_stat = insert(self.model).values([item.model_dump() for item in data])

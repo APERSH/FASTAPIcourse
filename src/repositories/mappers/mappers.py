@@ -7,7 +7,7 @@ from src.schemas.bookings import Booking
 from src.schemas.rooms import Room
 from src.schemas.users import User
 from src.models.hotels import HotelsOrm
-from repositories.mappers.base import DataMapper
+from src.repositories.mappers.base import DataMapper
 from src.schemas.hotels import Hotel
 
 

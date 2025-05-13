@@ -1,7 +1,7 @@
-from repositories.mappers.mappers import HotelDataMapper
+from src.repositories.mappers.mappers import HotelDataMapper
 from src.models.rooms import RoomsOrm
-from repositories.base import BaseRepository
-from repositories.utils import rooms_ids_for_bookings
+from src.repositories.base import BaseRepository
+from src.repositories.utils import rooms_ids_for_bookings
 from src.models.hotels import HotelsOrm
 from sqlalchemy import select, func
 
