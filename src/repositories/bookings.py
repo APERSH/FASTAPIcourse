@@ -6,6 +6,7 @@ from sqlalchemy import select
 from datetime import date
 from src.repositories.utils import rooms_ids_for_booking
 from src.schemas.bookings import BookingAdd
+from fastapi import HTTPException
 
 class BookingsRepository(BaseRepository):
     model = BookingsOrm
@@ -32,4 +33,4 @@ class BookingsRepository(BaseRepository):
             new_booking = await self.add(data)
             return new_booking
         else:
-            raise Exception
+            raise HTTPException(status_code=500)
